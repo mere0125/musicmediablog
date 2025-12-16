@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Drugs, Music, and the Search for Altered States — Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 36px 16px 40px;
+      background:
+        radial-gradient(circle at top, #26264a 0, #050510 50%, #020108 100%);
+      color: #f5f5f7;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #ff9ad9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 26px;
+    }
+
+    @media (max-width: 880px) {
+      .page-wrap {
+        grid-template-columns: 1fr;
+      }
+      .side-nav {
+        position: static;
+        margin-bottom: 4px;
+      }
+    }
+
+    /* 左侧导航 */
+
+    .side-nav {
+      position: sticky;
+      top: 20px;
+      align-self: flex-start;
+      padding: 18px 16px 18px;
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(15, 14, 38, 0.96), rgba(8, 7, 24, 0.94));
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow:
+        0 22px 60px rgba(0,0,0,0.85),
+        0 0 0 1px rgba(255,255,255,0.05);
+      backdrop-filter: blur(18px);
+    }
+
+    .side-kicker {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #a9acc8;
+      margin-bottom: 4px;
+    }
+
+    .side-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #fdfdff;
+      margin-bottom: 4px;
+    }
+
+    .side-meta {
+      font-size: 0.8rem;
+      color: #c4c6dd;
+      margin-bottom: 14px;
+    }
+
+    .nav-divider-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #8f92b3;
+      margin: 14px 0 6px;
+    }
+
+    .side-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.8rem;
+    }
+
+    .side-nav li {
+      margin-bottom: 4px;
+    }
+
+    .side-nav a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 6px;
+      border-radius: 7px;
+      color: #d7d8f1;
+      transition: background 0.18s, color 0.18s, transform 0.12s;
+    }
+
+    .side-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ff71b8, #ff4170);
+      opacity: 0.7;
+    }
+
+    .side-nav a:hover {
+      background: radial-gradient(circle at left, rgba(255,113,184,0.18), transparent 60%);
+      color: #ffffff;
+      transform: translateX(2px);
+    }
+
+    .legend {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(255,255,255,0.16);
+      font-size: 0.72rem;
+      color: #9fa1c4;
+    }
+
+    /* 右侧主区域 */
+
+    .main-shell {
+      border-radius: 28px;
+      padding: 24px 22px 26px;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.06), rgba(5,4,18,0.96));
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.9),
+        0 0 0 1px rgba(255,255,255,0.04);
+      backdrop-filter: blur(20px);
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 24px 10px 32px;
+      }
+      .main-shell {
+        padding: 20px 16px 22px;
+      }
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      margin: 0 0 6px;
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+
+    .meta {
+      text-align: center;
+      color: #b8bad5;
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin: 6px 0 10px;
+      font-size: 0.78rem;
+    }
+
+    .chip {
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background:
+        radial-gradient(circle at top, rgba(255,113,184,0.18), rgba(48,40,90,0.8));
+      color: #f7f1ff;
+    }
+
+    .entries-wrap {
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .entry {
+      padding: 18px 16px 18px;
+      border-radius: 18px;
+      background:
+        linear-gradient(145deg, rgba(9,9,26,0.96), rgba(20,18,46,0.9));
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.78);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .entry::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.55;
+      background:
+        radial-gradient(circle at top right, rgba(111,220,255,0.12), transparent 55%),
+        radial-gradient(circle at bottom left, rgba(255,113,184,0.18), transparent 60%);
+      mix-blend-mode: screen;
+    }
+
+    .entry-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .entry-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .entry-index {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #aaaed4;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      font-size: 1.12rem;
+      letter-spacing: 0.02em;
+      border-left: 4px solid #ff71b8;
+      padding-left: 10px;
+    }
+
+    p {
+      margin: 0 0 10px;
+      font-size: 0.97rem;
+    }
+
+    .entry-footer-line {
+      margin-top: 4px;
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(to right, rgba(255,255,255,0.1), transparent);
+    }
+
+    .works-entry h2 {
+      border-color: #9cf0ff;
+    }
+
+    .works-list {
+      margin: 6px 0 0;
+      padding-left: 18px;
+      font-size: 0.9rem;
+    }
+
+    .works-list li {
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- 左侧导航 -->
+  <aside class="side-nav">
+    <div class="side-kicker">Final Project Blog</div>
+    <div class="side-title">Drugs, Music, and the Search for Altered States</div>
+    <div class="side-meta">
+      By Mere Cui<br />
+      Music, Media, and Society<br />
+      Prof. Jeannie Oliver-Cretara
+    </div>
+
+    <div class="nav-divider-label">Entries</div>
+    <ul>
+      <li><a href="#entry1"><span class="side-dot"></span> Entry 1 — About This Blog</a></li>
+      <li><a href="#entry2"><span class="side-dot"></span> Entry 2 — Drugs, Euphoria, and the Culture Industry</a></li>
+      <li><a href="#entry3"><span class="side-dot"></span> Entry 3 — Neuropsychology of Music and Drugs</a></li>
+      <li><a href="#entry4"><span class="side-dot"></span> Entry 4 — Psychedelics and Counterculture</a></li>
+      <li><a href="#entry5"><span class="side-dot"></span> Entry 5 — Modern EDM and Connection</a></li>
+      <li><a href="#entry6"><span class="side-dot"></span> Entry 6 — Ayahuasca and Context</a></li>
+    </ul>
+
+    <div class="nav-divider-label">References</div>
+    <ul>
+      <li><a href="#works"><span class="side-dot"></span> Works Cited</a></li>
+    </ul>
+
+    <div class="legend">
+      Scroll the entries on the right.<br />
+      Click titles to jump between sections.
+    </div>
+  </aside>
+
+  <!-- 右侧主内容 -->
+  <main class="main-shell">
+
+    <h1>🎧 Final Project Blog: “Drugs, Music, and the Search for Altered States”</h1>
+    <div class="meta">
+      By Mere Cui · Music, Media, and Society · Professor Jeannie Oliver-Cretara
+    </div>
+
+    <div class="chip-row">
+      <div class="chip">Drugs & Music</div>
+      <div class="chip">Rave Culture</div>
+      <div class="chip">Neuropsychology</div>
+      <div class="chip">Psychedelics</div>
+    </div>
+
+    <div class="entries-wrap">
+
+      <!-- Entry 1 -->
+      <section class="entry" id="entry1">
+        <div class="entry-inner">
+          <div class="entry-header-row">
+            <h2>Entry 1 — About This Blog</h2>
+            <div class="entry-index">Entry 01</div>
+          </div>
+
+          <p>This blog explores the relationship between drugs, music, and the desire to escape ordinary consciousness. Living in New York has made this topic especially compelling for me. The city is a place where nightlife, rave culture, and underground scenes coexist with intense pressures of work, identity, and survival. It often feels like people here constantly look for ways to soften the edges of everyday life, whether through music, substances, or trying to enter a different emotional landscape for a few hours.</p>
+
+          <p>Throughout this blog, I explore how music and drugs create forms of euphoria, belonging, and spiritual intensity, while also questioning how these altered states become commercialized. Inspired from theories and reading in the course, particularly Adorno and Horkheimer’s ideas about the culture industry and our conversations about identity and authenticity, I want to understand how substances have shaped both the creativity of musicians and the social experience of listeners. Many people imagine drugs and music as symbols of rebellion, but in today’s culture industry, these symbols often become commodified parts of the entertainment economy.</p>
+
+          <p>By mixing academic research, neuropsychological insights, and personal reflections on rave and club culture, I want to explore how people use music and drugs to find freedom within a system that constantly tries to sell it back to them.</p>
+
+          <div class="entry-footer-line"></div>
+        </div>
+      </section>
+
+      <!-- Entry 2 -->
+      <section class="entry" id="entry2">
+        <div class="entry-inner">
+          <div class="entry-header-row">
+            <h2>Entry 2 — Drugs, Euphoria, and the Culture Industry</h2>
+            <div class="entry-index">Entry 02</div>
+          </div>
+
+          <p>Adorno and Horkheimer’s theory of the culture industry gives us a sharp lens for understanding how drugs and music intersect in modern entertainment. They argue that capitalist systems turn every form of pleasure into a managed commodity, offering “freedom” only in ways that keep people consuming. When I think about the evolution of rave culture, from illegal warehouses to festival brands, I see exactly what they meant. Substances like MDMA or LSD, once symbols of countercultural rebellion, now circulate inside highly polished, corporately curated environments.</p>
+
+          <p>In the 1990s, raves formed as spontaneous gatherings that resisted mainstream norms. People created communal spaces where music and drugs supported alternative identities and ways of feeling. But as Scott Hutson (2000) argues, rave spirituality gradually became packaged as a sanitized “experience,” one that large promoters learned to monetize. Entry wristbands, VIP areas, sponsored water brands create a sense that transcendence comes as part of a purchasable lifestyle.</p>
+
+          <p>New York has a special relationship with this tension. Even though the city is known for underground scenes, like Bushwick warehouses, queer collectives, secret techno parties, its nightlife is also deeply shaped by real-estate pressures and commercial nightlife districts. I have seen events where genuine community tries to survive inside a fully monetized environment. The music may offer emotional intensity, but the structure around it reminds you that this has an admission fee.</p>
+
+          <p>The use of drugs inside this system becomes complicated. On one hand, MDMA amplifies the emotional openness that rave culture celebrates. On the other, it is involved into the festival economy, where emotional highs help push the sense of a once-in-a-lifetime experience. Simon Reynolds (2012) writes about how rave culture always changed between resistance and commercialization.</p>
+
+          <p>When we see drugs and music through Adorno’s perspective, the question becomes whether euphoria is still resistance, or whether it has become part of the market’s rhythm. My sense is that both are true. Even within the culture industry, people still find real emotional escape, but the system learns to absorb and resell that desire.</p>
+
+          <div class="entry-footer-line"></div>
+        </div>
+      </section>
+
+      <!-- Entry 3 -->
+      <section class="entry" id="entry3">
+        <div class="entry-inner">
+          <div class="entry-header-row">
+            <h2>Entry 3 — Altered States: Neuropsychology of Music and Drugs</h2>
+            <div class="entry-index">Entry 03</div>
+          </div>
+
+          <p>In my Intro to Neuropsychology class this semester, we spent several weeks learning how music and drugs affect the brain’s reward circuits. This scientific perspective completely changed how I think about rave culture. Both music and substances trigger neural pathways involving serotonin, dopamine, and the limbic system. These systems shape emotional regulation, pleasure, and memory, which helps explain why altered states can feel meaningful or even spiritual.</p>
+
+          <p>For example, MDMA increases serotonin and oxytocin, enhancing feelings of empathy and connection. When combined with repetitive rhythm, low-frequency bass, and collective movement, the experience becomes more than chemical. The brain integrates sensory, emotional, and social input into something that feels transcendent. Graham St John (2011) describes these states as “spiritual technologies,” suggesting that people use sound, movement, and substances to enter new forms of consciousness. What interests me is how neuroscience complements this idea by showing the underlying mechanisms.</p>
+
+          <p>Music alone can create powerful emotional responses. Neuropsychology research shows that rhythm activates motor circuits, melody engages the hippocampus, and emotional peaks stimulate dopamine release. This means the brain already has a built-in system for producing euphoria. When people say a song “hits different” while high, there is a physiological explanation.</p>
+
+          <p>Thinking about New York again, I often see how people use nightlife as emotional regulation. The city is overstimulating, stressful, and isolating. Raves offer the opposite: synchronization, shared rhythms, and release. Whether or not substances are involved, people try to find a break from the cognitive load of everyday life.</p>
+
+          <p>But neuropsychology also raises ethical questions. Is the experience meaningful if it is chemically enlarged? Does the brain treat drug-enhanced emotions differently from naturally occurring ones? From what we learned, memory consolidation does not distinguish between the two, which means drug-infused experiences can feel just as real and emotionally important.</p>
+
+          <p>This connection between neuroscience and rave culture helps me understand why people return to these spaces. Also, whether created by music or substances, offer temporary relief from the self. Even within the culture industry, these moments can feel deeply personal and transformative.</p>
+
+          <div class="entry-footer-line"></div>
+        </div>
+      </section>
+
+      <!-- Entry 4 -->
+      <section class="entry" id="entry4">
+        <div class="entry-inner">
+          <div class="entry-header-row">
+            <h2>Entry 4 — Psychedelics, Mysticism, and the History of Music Counterculture</h2>
+            <div class="entry-index">Entry 04</div>
+          </div>
+
+          <p>To understand the present, it helps to look back to the 1960s, when psychedelic music became a cultural movement. During this era, LSD was not just a substance but a worldview. Musicians and listeners believed psychedelics could open the mind, expand creativity, and generate mystical insight. I also believe that. Jens Schlieter (2019) talks about this as a search for something greater in today's societies, where traditional religion doesn't have the same power anymore.</p>
+
+          <p>Music helped these changed states make sense. . Psychedelic rock bands like The Grateful Dead, Jefferson Airplane, and Pink Floyd used extended improvisations, distortion, and surreal lyrics to reflect the mindset of a generation exploring consciousness. Timothy Leary’s slogan “Turn on, tune in, drop out” became a cultural script linking music, drugs, and liberation.</p>
+
+          <p>Graham St John (2011) argues that psychedelic culture developed “spiritual technologies” long before today’s festival world.</p>
+
+          <p>But even the 1960s counterculture was not immune to commercialization. As the movement grew, record companies learned to market the psychedelic aesthetic, just turning rebellion into style. This pattern mirrors today’s EDM culture, showing that the commodification of altered states is not new but part of a long history.</p>
+
+          <p>But there is still something compelling about the way people use psychedelics and music to search for meaning. Schlieter (2019) notes that modern individuals turn to drugs not just for pleasure but for a form of secular mysticism, hoping to experience something beyond the ordinary. This search continues today in New York’s micro-communities around ketamine therapy, psychedelic ceremonies, or experimental music venues that prioritize sensory immersion.</p>
+
+          <p>What I find interesting is how the aesthetics of psychedelia survive even as their social meaning changes. Psychedelic visuals appear in TikTok filters, EDM stage designs, and brand advertising, and many people still use psychedelics privately in ways that resemble earlier counterculture ideals: introspection, connection, or escape.</p>
+
+          <p>Understanding this history helps frame today’s rave and drug culture not as something new but as an evolution. People continue to use sound and substances to explore the boundaries of consciousness, even as these experiences get absorbed into broader systems of entertainment and consumption.</p>
+
+          <div class="entry-footer-line"></div>
+        </div>
+      </section>
+
+      <!-- Entry 5 -->
+      <section class="entry" id="entry5">
+        <div class="entry-inner">
+          <div class="entry-header-row">
+            <h2>Entry 5 — Modern EDM, MDMA, and Manufactured Connection</h2>
+            <div class="entry-index">Entry 05</div>
+          </div>
+
+          <p>Modern EDM festivals provide emotional intensity, community, and self-expression.But the structures that make these promises frequently look like what Adorno and Horkheimer worried about: pleasure controlled by institutions. Drugs play a complex role in this system. MDMA, for instance, enhances emotional warmth and sensory pleasure, which aligns perfectly with the festival’s atmosphere. But this emotional openness becomes part of a designed experience.</p>
+
+          <p>Shoshana Zuboff (2019) argues that capitalism increasingly shapes not only what people buy but how they feel. In the EDM world, substances help improve the illusion of authenticity within environments that are highly curated. The LED walls, timed drops, confetti blasts, and emotional speeches from DJs all work together to produce predictable peaks of collective feeling. Drugs do not create the feeling on their own, they stronger the system.</p>
+
+          <p>New York is full of these contradictions. On one weekend, I can go to a queer underground party in Brooklyn that still feels raw, communal, and resistant. On another, I can walk into a glossy Manhattan club where the night feels entirely scripted, from the music to the bottle-service things. In both spaces, people may use substances, but the meaning of the experience is different. One offers a fragile sense of freedom; the other sells a polished fantasy.</p>
+
+          <p>Simon Reynolds (2012) mentions that rave culture’s emotional openness makes it easy for festivals to brand themselves as “transformative.” Companies adopt the language of peace, love, and unity, even while operating within a rigid business model. The result is what I think of as “manufactured connection”, that real emotions happening inside a commercial container.</p>
+
+          <p>Still, the experiences are not fake. People cry, hug even kiss strangers, dance for hours, and feel understood in ways they may not in daily life. This is why I do not believe commercialization entirely erases authenticity. Instead, the emotional truths of rave culture coexist with their commodified forms. Drugs magnify the sense of connection, but they also reveal how carefully contemporary festivals shape that feeling.</p>
+
+          <p>This tension between genuine emotion and managed experience is one of the central questions of today’s music culture.</p>
+
+          <div class="entry-footer-line"></div>
+        </div>
+      </section>
+
+      <!-- Entry 6 -->
+      <section class="entry" id="entry6">
+        <div class="entry-inner">
+          <div class="entry-header-row">
+            <h2>Entry 6 — Case Study: Ayahuasca, Context, and Musical Experience</h2>
+            <div class="entry-index">Entry 06</div>
+          </div>
+
+          <p>To expand beyond rave culture, I looked at psychedelic experiences in ritual things, particularly ayahuasca ceremonies. Sapoznikow et al. (2019) studied how the meaning of ayahuasca varies based on cultural and social backgrounds. In traditional Amazonian ceremonies, songs (icaros) guide the experience, helping participants navigate visions and emotions. The music is not background; it is an active agent in shaping the altered state.</p>
+
+          <p>This relationship between sound and substance challenges the idea that drugs alone create transcendence. Instead, music functions as structure, language, and emotional basis. When ayahuasca is taken in Western therapeutic or recreational settings, people often recreate ceremonial elements like dim lighting, specific playlists, or guided soundscapes to retain a sense of intention. Even in these modern situations, sound becomes a tool for emotional navigation.</p>
+
+          <p>This made me think about how rave culture uses sound in similar ways. Though the settings are vastly different, both rely on sensory environments to guide emotional experience. In an ayahuasca ceremony, the icaro might relax anxiety. In a warehouse rave, a deep techno pulse can ground someone who feels overwhelmed. The drug is only part of the trip, music offers direction.</p>
+
+          <p>Ruiz Vega’s (2022) work on narcoculture adds another dimension. He argues that musical representation shapes how communities understand drugs socially and culturally. The meanings people attach to substances are always influenced by narrative, identity, and sound. Ayahuasca is thought as healing and spiritual; MDMA is considered as communal and euphoric; cocaine is framed as dangerous or glamorous depending on the scene. Music participates in creating these cultural frameworks.</p>
+
+          <p>New York’s nightlife reflects this perfectly. In techno spaces, ketamine is normalized as introspective. In pop clubs, MDMA is related with openness and dancing. In experimental sound events, psychedelics are seen as tools for sensory exploration. Sound shapes the meaning of the drug, not the other way around.</p>
+
+          <p>This case study larger the broader theme of this blog: altered states are always social. Music, environment, and cultural narratives transform chemical effects into emotional and symbolic experiences. Drugs and music form a shared language that people use to escape, heal, or reinvent themselves.</p>
+
+          <div class="entry-footer-line"></div>
+        </div>
+      </section>
+
+      <!-- Works Cited -->
+      <section class="entry works-entry" id="works">
+        <div class="entry-inner">
+          <div class="entry-header-row">
+            <h2>Works Cited (MLA Format)</h2>
+            <div class="entry-index">Refs</div>
+          </div>
+
+          <ul class="works-list">
+            <li>Adorno, Theodor W., and Max Horkheimer. <i>Dialectic of Enlightenment: The Culture Industry.</i> Stanford University Press, 2002. Google Books, Accessed 9 Dec. 2025.</li>
+
+<li>Hutson, Scott R. “The Rave: Spiritual Healing in Modern Western Subcultures.” <i>Anthropological Quarterly</i>, vol. 73, no. 1, 2000, pp. 35–49. PDF, Void Network, 
+<a href="https://voidnetwork.gr/wp-content/uploads/2016/09/Rave-as-spiritual-healing-in-Modern-Western-Subcultures-by-Scott-R.-Hutson.pdf" target="_blank">https://voidnetwork.gr/wp-content/uploads/2016/09/Rave-as-spiritual-healing-in-Modern-Western-Subcultures-by-Scott-R.-Hutson.pdf</a>. Accessed 10 Dec. 2025.</li>
+
+<li>Reynolds, Simon. <i>Energy Flash: A Journey Through Rave Music and Dance Culture.</i> Soft Skull Press, 2012. Internet Archive, 
+<a href="https://archive.org/details/energyflashjourn0000reyn" target="_blank">https://archive.org/details/energyflashjourn0000reyn</a>. Accessed 10 Dec. 2025.</li>
+
+<li>Redhead, Steve. <i>Rave Off: Politics and Deviance in Contemporary Youth Culture.</i> Avebury, 1993. Internet Archive, 
+<a href="https://archive.org/details/raveoffpoliticsd0000unse" target="_blank">https://archive.org/details/raveoffpoliticsd0000unse</a>. Accessed 10 Dec. 2025.</li>
+
+<li>Sapoznikow, Avery, et al. “The Influence of Context on Ayahuasca Experiences: An Analysis of Experience Reports.” <i>Journal of Psychedelic Studies</i>, vol. 3, no. 3, 2019, pp. 288–294. Akadémiai Kiadó, 
+<a href="https://doi.org/10.1556/2054.2019.028" target="_blank">https://doi.org/10.1556/2054.2019.028</a>. Accessed 10 Dec. 2025.</li>
+
+<li>Partridge, Christopher. <i>High Culture: Drugs, Mysticism, and the Pursuit of Transcendence in the Modern World.</i> Oxford University Press, 2019. 
+<a href="https://doi.org/10.1093/oso/9780190459116.001.0001" target="_blank">https://doi.org/10.1093/oso/9780190459116.001.0001</a>. Accessed 10 Dec. 2025.</li>
+
+<li>St John, Graham. “Spiritual Technologies and Altering Consciousness in Contemporary Counterculture.” <i>Altering Consciousness: A Multidisciplinary Perspective</i>, vol. 1, edited by Etzel Cardeña and Michael Winkelman, Praeger Perspectives, 2011, pp. 203–225. ResearchGate, 
+<a href="https://www.researchgate.net/publication/273017035_Spiritual_Technologies_and_Altering_Consciousness_in_Contemporary_Counterculture" target="_blank">https://www.researchgate.net/publication/273017035_Spiritual_Technologies_and_Altering_Consciousness_in_Contemporary_Counterculture</a>. Accessed 10 Dec. 2025.</li>
+
+<li>Vega, Omar Ruiz. “The Influence of Narcoculture on Popular Music: A Critical Look at Reggaeton’s Narco-Messages and Narco-Representations.” <i>Journal of the Royal Musical Association</i>, vol. 147, no. 1, 2022, pp. 77–104. Cambridge University Press, 
+<a href="https://doi.org/10.1017/rma.2022.13" target="_blank">https://doi.org/10.1017/rma.2022.13</a>. Accessed 10 Dec. 2025.</li>
+
+<li>Zuboff, Shoshana. <i>The Age of Surveillance Capitalism: The Fight for a Human Future at the New Frontier of Power.</i> PublicAffairs, 2019. PublicAffairs Books,
+<a href="https://www.publicaffairsbooks.com/titles/shoshana-zuboff/the-age-of-surveillance-capitalism/9781478947271/" target="_blank">https://www.publicaffairsbooks.com/titles/shoshana-zuboff/the-age-of-surveillance-capitalism/9781478947271/</a>. Accessed 10 Dec. 2025.</li>
+
+          </ul>
+
+          <div class="entry-footer-line"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
